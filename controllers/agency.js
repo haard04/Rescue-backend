@@ -16,17 +16,55 @@ export  const getAgencies=async (req,res)=>{
 }
 
 export const createAgency= async (req,res)=>{
-    // const post=req.body;
+   
+    try {
+        // Extract agency data from the request body
+        const {
+          name,
+          password,
+          identification_number,
+          address,
+          categories,
+          resources,
+          latitude,
+          longitude,
+          city,
+          contactNumber,
+          state,
+          id,
+          uid,
+          verified,
+          availibility,
+        } = req.body;
+    
+        // Create a new agency document
+        const newAgency = new Agency({
+          name,
+          password,
+          identification_number,
+          address,
+          categories,
+          resources,
+          latitude,
+          longitude,
+          city,
+          contactNumber,
+          state,
+          id,
+          uid,
+          verified,
+          availibility,
+        });
+    
+        // Save the agency document to the database
+        await newAgency.save();
+    
+        res.status(201).json({ message: 'Agency created successfully', agency: newAgency });
+      } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: 'Internal server error' });
+      }
 
-    // const newPost=new PostMessage(post);
 
-    // try {
-    //     await newPost.save();
-    //     res.status(201).json(newPost);
-    //     return;
-    // } catch (error) {
-    //     res.status(409).json({message:error.message})
-    //     return;
-    // }
-    console.log('create')
+   
 }
