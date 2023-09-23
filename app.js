@@ -13,8 +13,8 @@ app.use(bodyParser.urlencoded({limit:"30mb",extended:true}));
 app.use(cors());
 
 app.use('/',routes);
-const CONNECTION_URL ='';
-const PORT = process.env.PORT ||5002;
+const CONNECTION_URL ='mongodb+srv://printpops02:9377618011@cluster0.zdz7sks.mongodb.net/?retryWrites=true&w=majority';
+const PORT = process.env.PORT ||12000;
 //const BASE_URL= process.env.BASE_URL
 mongoose.set("strictQuery", false);
 mongoose.connect(CONNECTION_URL , 
