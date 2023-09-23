@@ -36,4 +36,4 @@ app.get("/", async (req, res) => {
       res.status(500).json({ message: "Internal server error" });
     }
   });
-  app.use('/', routes); // Changed the base URL to '/agencies'
+  app.use('/', routes); // Changed the base URL to '/'
