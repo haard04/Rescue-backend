@@ -1,18 +1,18 @@
-
 import Agency from "../models/agency.js";
 import mongoose from "mongoose";
 
 export  const getAgencies=async (req,res)=>{
-    // try{
-    //     const postMessages =await PostMessage.find();
-    //     res.status(200).json(postMessages)
-    //     return;
-    // }
-    // catch(error){
-    //     res.status(404).json({message:error.message})
-    //     return;
-    // }
-    console.log("get request")
+  try {
+    // Use Mongoose to query the database and retrieve agencies
+    const agencies = await Agency.find();
+
+    // Send the retrieved agencies as a JSON response
+    res.status(200).json(agencies);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Internal server error' });
+  }
+  
 }
 
 export const createAgency= async (req,res)=>{
@@ -22,7 +22,6 @@ export const createAgency= async (req,res)=>{
         const {
           name,
           password,
-          identification_number,
           address,
           categories,
           resources,
@@ -31,9 +30,10 @@ export const createAgency= async (req,res)=>{
           city,
           contactNumber,
           state,
-          id,
+          
+          
           uid,
-          verified,
+      
           availibility,
         } = req.body;
     
@@ -41,7 +41,6 @@ export const createAgency= async (req,res)=>{
         const newAgency = new Agency({
           name,
           password,
-          identification_number,
           address,
           categories,
           resources,
@@ -50,9 +49,9 @@ export const createAgency= async (req,res)=>{
           city,
           contactNumber,
           state,
-          id,
+       
           uid,
-          verified,
+          
           availibility,
         });
     
@@ -68,3 +67,19 @@ export const createAgency= async (req,res)=>{
 
    
 }
+
+export const getAgenciesByCity = async (req, res) => {
+  try {
+    // Retrieve the 'city' query parameter from the request
+    const { city } = req.query;
+
+    // Use Mongoose to query the database and retrieve agencies by city
+    const agencies = await Agency.find({ city });
+
+    // Send the retrieved agencies as a JSON response
+    res.status(200).json(agencies);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Internal server error' });
+  }
+};

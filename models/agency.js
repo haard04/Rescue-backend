@@ -9,10 +9,7 @@ const agencySchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  identification_number: {
-    type: String,
-    required: true,
-  },
+  
   address: {
     type: String, 
     required: true,
@@ -45,21 +42,13 @@ const agencySchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  id: {
-    type: String, 
-    required: true,
-    unique:true
-  },
   uid: {
     type: Number,
     required: true,
     unique: true, 
   },
-  verified: {
-    type: Boolean,
-    default:false,
-    unique: true, 
-  },
+ 
+ 
   availibility:{
     type:Boolean
   }
