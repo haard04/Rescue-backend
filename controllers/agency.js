@@ -30,7 +30,7 @@ export const createAgency= async (req,res)=>{
           city,
           contactNumber,
           state,
-          id,
+          
           
           uid,
       
@@ -49,7 +49,7 @@ export const createAgency= async (req,res)=>{
           city,
           contactNumber,
           state,
-         id,
+       
           uid,
           
           availibility,
@@ -67,3 +67,19 @@ export const createAgency= async (req,res)=>{
 
    
 }
+
+export const getAgenciesByCity = async (req, res) => {
+  try {
+    // Retrieve the 'city' query parameter from the request
+    const { city } = req.query;
+
+    // Use Mongoose to query the database and retrieve agencies by city
+    const agencies = await Agency.find({ city });
+
+    // Send the retrieved agencies as a JSON response
+    res.status(200).json(agencies);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Internal server error' });
+  }
+};

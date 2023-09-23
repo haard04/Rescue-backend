@@ -6,7 +6,7 @@ import routes from "./routes/agency.js"
 import fs from "fs"
 import https from "https"
 const app = express();
-const port = 6010; 
+const port = 5000; 
 
 
 app.use(bodyParser.json({limit:"30mb",extended:true}));
@@ -36,3 +36,4 @@ app.get("/", async (req, res) => {
       res.status(500).json({ message: "Internal server error" });
     }
   });
+  app.use('/agencies', routes); // Changed the base URL to '/agencies'
