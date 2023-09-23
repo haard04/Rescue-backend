@@ -13,7 +13,12 @@ app.use(bodyParser.urlencoded({limit:"30mb",extended:true}));
 app.use(cors());
 
 app.use('/',routes);
-
-app.listen(port, () => {
-  console.log(`Server is running on http://localhost:${port}`);
-});
+const CONNECTION_URL ='';
+const PORT = process.env.PORT ||5002;
+//const BASE_URL= process.env.BASE_URL
+mongoose.set("strictQuery", false);
+mongoose.connect(CONNECTION_URL , 
+    { useNewUrlParser:true,useUnifiedTopology: true}
+    )
+    .then(()=> app.listen(PORT,()=> console.log(`Server Running on port:${PORT}`)))
+    .catch((error)=>console.log(error.message));
