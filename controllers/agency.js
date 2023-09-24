@@ -33,6 +33,7 @@ export const createAgency= async (req,res)=>{
           
           
           uid,
+          verified,
       
           availability,
         } = req.body;
@@ -51,7 +52,7 @@ export const createAgency= async (req,res)=>{
           state,
        
           uid,
-          
+          verified,
           availability,
         });
     
