@@ -34,7 +34,7 @@ export const createAgency= async (req,res)=>{
           
           uid,
       
-          availibility,
+          availability,
         } = req.body;
     
         // Create a new agency document
@@ -52,7 +52,7 @@ export const createAgency= async (req,res)=>{
        
           uid,
           
-          availibility,
+          availability,
         });
     
         // Save the agency document to the database
@@ -68,6 +68,21 @@ export const createAgency= async (req,res)=>{
    
 }
 
+/* export const getAgenciesByCity = async (req, res) => {
+  try {
+    // Retrieve the 'city' query parameter from the request
+    const { city } = req.query;
+
+    // Use Mongoose to query the database and retrieve agencies by city
+    const agencies = await Agency.find({ city }, { availability: 1 });
+
+    // Send the retrieved agencies as a JSON response
+    res.status(200).json(agencies);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Internal server error' });
+  }
+}; */
 export const getAgenciesByCity = async (req, res) => {
   try {
     // Retrieve the 'city' query parameter from the request

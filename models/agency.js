@@ -49,8 +49,9 @@ const agencySchema = new mongoose.Schema({
   },
  
  
-  availibility:{
-    type:Boolean
+  availability:{
+    type:Boolean,
+   
   }
 });
 
